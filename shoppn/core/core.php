@@ -30,14 +30,16 @@ function is_admin()
 function require_login()
 {
     if (!is_logged_in()) {
-        redirect('/~kingsford.amissah/shoppn/views/login.php');
+        redirect('/ecommers_class/lab-register_and_login/views/login.php');
     }
 }
+
 
 function require_admin()
 {
     if (!is_admin()) {
         $_SESSION['error'] = 'You do not have permission to access that page.';
-        redirect('/~kingsford.amissah/shoppn/index.php');
+        redirect('/ecommers_class/lab-register_and_login/views/login.php');
     }
 }
+

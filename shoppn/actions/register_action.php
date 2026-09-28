@@ -76,12 +76,13 @@ $result = $controller->register($data);
 if ($result['success']) {
 
     $_SESSION['customer_id'] = $result['customer_id'];
+    $_SESSION['customer_name'] = $data['name'];
+    $_SESSION['customer_email'] = $data['email'];
     $_SESSION['user_role'] = 2;
 
     redirect('../views/account/my_account.php');
-}
-
+}   
 // Registration failed
-$_SESSION['error'] = $result['error'];
+$_SESSION['error'] = $result['error'] ?? 'Registration failed. Please try again.';
 
 redirect('../views/register.php');

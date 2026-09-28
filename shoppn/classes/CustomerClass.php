@@ -2,8 +2,10 @@
 
 require_once __DIR__ . '/../core/db_class.php';
 
+// CustomerClass handles customer-related database operations
 class CustomerClass extends Database
 {
+    // Check if the email already exists in the database
     public function emailExists($email)
     {
         $stmt = $this->conn->prepare(
@@ -22,7 +24,7 @@ class CustomerClass extends Database
 
         return $exists;
     }
-
+    // Add a new customer to the database
     public function addCustomer(
         $name,
         $email,
@@ -71,6 +73,7 @@ class CustomerClass extends Database
         return false;
     }
 
+    // Retrieve customer details by email
 public function getCustomerByEmail($email)
 {
     $stmt = $this->conn->prepare(
@@ -88,7 +91,7 @@ public function getCustomerByEmail($email)
     return $customer ?: false;
 }
 
-
+// Verify customer login credentials
 public function login($email, $pass)
 {
     $customer = $this->getCustomerByEmail($email);
