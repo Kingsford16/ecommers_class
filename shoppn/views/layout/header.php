@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopPN</title>
 
-    <link rel="stylesheet" href="/ecommers_class/lab-register_and_login/css/style.css">
+    <link rel="stylesheet" href="/ecommers_class/shoppn/css/style.css">
 </head>
 
 <body>
@@ -13,7 +14,7 @@
 <header>
     <nav>
 
-        <a href="/ecommers_class/lab-register_and_login/index.php">
+        <a href="/ecommers_class/shoppn/index.php">
             Home
         </a>
 
@@ -23,21 +24,33 @@
                 Welcome, <?= htmlspecialchars($_SESSION['customer_name']) ?>
             </span>
 
-            <a href="/ecommers_class/lab-register_and_login/views/account/my_account.php">
+            <a href="/ecommers_class/shoppn/views/account/my_account.php">
                 My Account
             </a>
 
-            <a href="/ecommers_class/lab-register_and_login/logout.php">
+            <?php if (is_admin()): ?>
+
+                <a href="/ecommers_class/shoppn/views/admin/brand.php">
+                    Manage Brands
+                </a>
+
+                <a href="/ecommers_class/shoppn/views/admin/category.php">
+                    Manage Categories
+                </a>
+
+            <?php endif; ?>
+
+            <a href="/ecommers_class/shoppn/logout.php">
                 Logout
             </a>
 
         <?php else: ?>
 
-            <a href="/ecommers_class/lab-register_and_login/views/register.php">
+            <a href="/ecommers_class/shoppn/views/register.php">
                 Register
             </a>
 
-            <a href="/ecommers_class/lab-register_and_login/views/login.php">
+            <a href="/ecommers_class/shoppn/views/login.php">
                 Login
             </a>
 
