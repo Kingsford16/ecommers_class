@@ -1,3 +1,4 @@
+
 <?php
 
 require_once __DIR__ . '/../classes/ProductClass.php';
@@ -10,6 +11,8 @@ class ProductController
     {
         $this->productModel = new ProductClass();
     }
+
+    //  BRAND METHODS
 
     // Add a brand
     public function addBrand($name)
@@ -35,6 +38,8 @@ class ProductController
         return $this->productModel->updateBrand($brand_id, $name);
     }
 
+    //  CATEGORY METHODS
+
     // Add a category
     public function addCategory($name)
     {
@@ -58,4 +63,88 @@ class ProductController
     {
         return $this->productModel->updateCategory($cat_id, $name);
     }
+
+    //  PRODUCT METHODS
+
+    // Add a new product
+    public function addProduct(
+        $category,
+        $brand,
+        $title,
+        $price,
+        $description,
+        $image,
+        $keywords
+    ) {
+        return $this->productModel->addProduct(
+            $category,
+            $brand,
+            $title,
+            $price,
+            $description,
+            $image,
+            $keywords
+        );
+    }
+
+    // Get one product by ID
+    public function getProductById($product_id)
+    {
+        return $this->productModel->getProductById($product_id);
+    }
+
+    // Update an existing product
+    public function updateProduct(
+        $product_id,
+        $category,
+        $brand,
+        $title,
+        $price,
+        $description,
+        $image,
+        $keywords
+    ) {
+        return $this->productModel->updateProduct(
+            $product_id,
+            $category,
+            $brand,
+            $title,
+            $price,
+            $description,
+            $image,
+            $keywords
+        );
+    }
+
+    // Get all products
+    public function getAllProducts()
+    {
+        return $this->productModel->getAllProducts();
+    }
+
+    
+    // Get featured products for the home page
+    public function getFeaturedProducts($limit = 6)
+    {
+        return $this->productModel->getFeaturedProducts($limit);
+    }
+
+    // Get products by category
+    public function getProductsByCategory($cat_id)
+    {
+        return $this->productModel->getProductsByCategory($cat_id);
+    }
+
+    // Get products by brand
+    public function getProductsByBrand($brand_id)
+    {
+        return $this->productModel->getProductsByBrand($brand_id);
+    }
+
+    // Search products by title or keywords
+    public function searchProducts($query)
+    {
+        return $this->productModel->searchProducts($query);
+    }
 }
+

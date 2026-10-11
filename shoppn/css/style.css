@@ -118,3 +118,150 @@ footer {
     background-color: #1f2937;
     color: white;
 }
+
+.shop-sidebar {
+    width: 220px;
+    min-width: 220px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+    color: #334155;
+}
+
+/* Sidebar heading */
+
+.sidebar-heading {
+    background: #173b67;
+    color: #ffffff;
+    padding: 20px 18px;
+}
+
+.sidebar-heading h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.sidebar-heading p {
+    margin: 5px 0 0;
+    color: #dbeafe;
+    font-size: 13px;
+}
+
+/* Sidebar sections */
+
+.sidebar-section {
+    padding: 18px 14px;
+    border-bottom: 1px solid #e8edf3;
+}
+
+.sidebar-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px;
+    color: #173b67;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.sidebar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 6px;
+    background: #edf4fc;
+    color: #173b67;
+    font-size: 18px;
+}
+
+/* Category and brand lists */
+
+.sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-list li {
+    margin: 3px 0;
+}
+
+.sidebar-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 7px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-list a:hover {
+    background: #edf4fc;
+    color: #173b67;
+}
+
+.sidebar-arrow {
+    color: #94a3b8;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.sidebar-list a:hover .sidebar-arrow {
+    color: #173b67;
+}
+
+/* Empty category or brand message */
+
+.sidebar-empty {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* View all products link */
+
+.sidebar-footer {
+    padding: 15px 14px;
+}
+
+.sidebar-reset {
+    display: block;
+    padding: 10px 12px;
+    border: 1px solid #173b67;
+    border-radius: 7px;
+    color: #173b67;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-reset:hover {
+    background: #173b67;
+    color: #ffffff;
+}
+
+/* Responsive layout */
+
+@media (max-width: 600px) {
+    .shop-sidebar {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+}
+
