@@ -6,6 +6,9 @@ require_once __DIR__ . '/../controllers/ProductController.php';
 // Create the controller
 $controller = new ProductController();
 
+// Base URL for local and remote hosting
+$baseUrl = app_base_url();
+
 // Decide which products to display
 if (isset($_GET['cat']) && is_numeric($_GET['cat'])) {
     $products = $controller->getProductsByCategory((int) $_GET['cat']);
@@ -25,6 +28,13 @@ require_once __DIR__ . '/layout/header.php';
 <main>
     <h1>Welcome to ShopPN</h1>
     <p>Discover our available products below.</p>
+
+    <?php if (isset($_SESSION['cart_message'])): ?>
+        <p>
+            <?= htmlspecialchars($_SESSION['cart_message']) ?>
+        </p>
+        <?php unset($_SESSION['cart_message']); ?>
+    <?php endif; ?>
 
     <div style="display: flex; gap: 30px; align-items: flex-start;">
 
@@ -51,7 +61,7 @@ require_once __DIR__ . '/layout/header.php';
                             <?php if (!empty($product['product_image'])): ?>
 
                                 <img
-                                    src="images/products/<?= rawurlencode(basename($product['product_image'])) ?>"
+                                    src="<?= $baseUrl ?>/images/products/<?= rawurlencode(basename($product['product_image'])) ?>"
                                     alt="<?= htmlspecialchars($product['product_title']) ?>"
                                     style="width: 100%; height: 160px; object-fit: contain;"
                                 >
@@ -90,13 +100,19 @@ require_once __DIR__ . '/layout/header.php';
                             <?php endif; ?>
 
                             <p>
-                                <a href="views/single_product.php?pro_id=<?= (int) $product['product_id'] ?>">
+                                <a
+                                    href="<?= $baseUrl ?>/views/single_product.php?pro_id=<?= (int) $product['product_id'] ?>"
+                                    style="display: inline-block; background-color: #2563eb; color: white; padding: 8px 14px; text-decoration: none; border-radius: 5px;"
+                                >
                                     View Details
                                 </a>
                             </p>
 
                             <p>
-                                <a href="index.php?add_cart=<?= (int) $product['product_id'] ?>">
+                                <a
+                                    href="<?= $baseUrl ?>/actions/add_to_cart_action.php?add_cart=<?= (int) $product['product_id'] ?>"
+                                    style="display: inline-block; background-color: #16a34a; color: white; padding: 8px 14px; text-decoration: none; border-radius: 5px;"
+                                >
                                     Add to Cart
                                 </a>
                             </p>
@@ -114,4 +130,3 @@ require_once __DIR__ . '/layout/header.php';
 </main>
 
 <?php require_once __DIR__ . '/layout/footer.php'; ?>
-

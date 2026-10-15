@@ -1,9 +1,10 @@
+
 <?php
 
-session_start();
+require_once __DIR__ . '/core/core.php';
 
 session_unset();
 session_destroy();
 
-header('Location: /ecommers_class/shoppn/index.php');
+header('Location: ' . app_base_url() . '/index.php');
 exit;

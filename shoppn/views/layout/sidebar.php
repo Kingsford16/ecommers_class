@@ -35,7 +35,7 @@ $brands = $controller->getAllBrands();
                 <?php foreach ($categories as $category): ?>
 
                     <li>
-                        <a href="/ecommers_class/shoppn/index.php?cat=<?= (int) $category['cat_id'] ?>">
+                        <a href="<?= app_base_url() ?>/index.php?cat=<?= (int) $category['cat_id'] ?>">
                             <span><?= htmlspecialchars($category['cat_name']) ?></span>
                             <span class="sidebar-arrow">&rsaquo;</span>
                         </a>
@@ -68,7 +68,7 @@ $brands = $controller->getAllBrands();
                 <?php foreach ($brands as $brand): ?>
 
                     <li>
-                        <a href="/ecommers_class/shoppn/index.php?brand=<?= (int) $brand['brand_id'] ?>">
+                        <a href="<?= app_base_url() ?>/index.php?brand=<?= (int) $brand['brand_id'] ?>">
                             <span><?= htmlspecialchars($brand['brand_name']) ?></span>
                             <span class="sidebar-arrow">&rsaquo;</span>
                         </a>
@@ -85,7 +85,7 @@ $brands = $controller->getAllBrands();
     <!-- Reset filters -->
     <div class="sidebar-footer">
 
-        <a href="/ecommers_class/shoppn/index.php" class="sidebar-reset">
+        <a href="<?= app_base_url() ?>/index.php" class="sidebar-reset">
             View All Products
         </a>
 

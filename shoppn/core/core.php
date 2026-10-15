@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -5,6 +6,22 @@ session_start();
 date_default_timezone_set('Africa/Accra');
 
 require_once __DIR__ . '/db_class.php';
+
+// Detect whether ShopPN is running locally or on the remote server.
+function app_base_url()
+{
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+    if (
+        $host === 'localhost' ||
+        str_starts_with($host, 'localhost:') ||
+        str_starts_with($host, '127.0.0.1')
+    ) {
+        return '/ecommers_class/shoppn';
+    }
+
+    return '/~kingsford.amissah/ecommers_class/shoppn';
+}
 
 function get_ip()
 {
@@ -30,7 +47,7 @@ function is_admin()
 function require_login()
 {
     if (!is_logged_in()) {
-        redirect('/ecommers_class/shoppn/views/login.php');
+        redirect(app_base_url() . '/views/login.php');
     }
 }
 
@@ -38,6 +55,6 @@ function require_admin()
 {
     if (!is_admin()) {
         $_SESSION['error'] = 'You do not have permission to access that page.';
-        redirect('/ecommers_class/shoppn/index.php');
+        redirect(app_base_url() . '/index.php');
     }
 }
